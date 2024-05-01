@@ -114,8 +114,8 @@ class Data {
       this.creator});
 
   Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    speciesId = json['species_id'];
+    id = json['id'] != null ? json['id'] as int : null;
+    speciesId = json['species_id'] != null ? json['species_id'] as int : null;
     date = json['date'];
     size20 = json['size_20'] != null ? json['size_20'] as int : null;
     size30 = json['size_30'] != null ? json['size_30'] as int : null;
@@ -142,16 +142,19 @@ class Data {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     regionId = json['region_id'];
-    contact = json['contact'];
+    contact = json['contact'] != null ? json['contact'] as String : null;
     countryId = json['country_id'];
     currencyId = json['currency_id'];
     private = json['private'];
     week = json['week'];
     dateRegionFullName = json['date_region_full_name'];
     provinceId = json['province_id'];
-    regencyId = json['regency_id'];
-    districtId = json['district_id'];
-    villageId = json['village_id'];
+    regencyId =
+        json['regency_id'] != null ? json['regency_id'] as String : null;
+    districtId =
+        json['district_id'] != null ? json['district_id'] as String : null;
+    villageId =
+        json['village_id'] != null ? json['village_id'] as String : null;
     creator =
         json['creator'] != null ? new Creator.fromJson(json['creator']) : null;
   }
@@ -215,7 +218,7 @@ class Creator {
   String? createdAt;
   String? updatedAt;
   String? regionId;
-  Null? address;
+  String? address;
   String? lastLoginAt;
   bool? deactivated;
   String? expiredAt;
@@ -223,29 +226,29 @@ class Creator {
   bool? phoneVerified;
   int? gender;
   String? occupation;
-  Null? idNumber;
-  Null? idScan;
-  Null? tinNumber;
-  Null? tinScan;
+  String? idNumber;
+  String? idScan;
+  String? tinNumber;
+  String? tinScan;
   String? birthdate;
-  Null? company;
-  Null? companyAddress;
-  Null? position;
-  Null? monthlyIncome;
-  Null? incomeSource;
+  String? company;
+  String? companyAddress;
+  String? position;
+  String? monthlyIncome;
+  String? incomeSource;
   bool? buyer;
   String? phoneCountry;
   String? country;
   String? interest;
-  Null? unsubscribeEmailAt;
-  Null? freshchatRestoreId;
+  String? unsubscribeEmailAt;
+  String? freshchatRestoreId;
   bool? allowCreateClient;
   bool? allowCreateToken;
   List<String>? interests;
-  //State? state;
-  Null? familyCardNumber;
-  Null? familyCardScan;
-  Null? telegramId;
+  // State? state;
+  String? familyCardNumber;
+  String? familyCardScan;
+  String? telegramId;
   String? genderName;
   String? expiredDate;
   String? expiredTime;
@@ -300,54 +303,93 @@ class Creator {
       this.upcomingBirthdate});
 
   Creator.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    roleId = json['role_id'];
-    name = json['name'];
-    email = json['email'];
-    avatar = json['avatar'];
-    emailVerified = json['email_verified'];
-    subscriptionTypeId = json['subscription_type_id'];
-    settings = json['settings'] != null
-        ? new Settings.fromJson(json['settings'])
+    id = json['id'] != null ? json['id'] as int : null;
+    roleId = json['role_id'] != null ? json['role_id'] as int : null;
+    name = json['name'] != null ? json['name'] as String : null;
+    email = json['email'] != null ? json['email'] as String : null;
+    avatar = json['avatar'] != null ? json['avatar'] as String : null;
+    emailVerified =
+        json['email_verified'] != null ? json['email_verified'] as bool : null;
+    subscriptionTypeId = json['subscription_type_id'] != null
+        ? json['subscription_type_id'] as int
         : null;
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    regionId = json['region_id'];
-    address = json['address'];
-    lastLoginAt = json['last_login_at'];
-    deactivated = json['deactivated'];
-    expiredAt = json['expired_at'];
-    phone = json['phone'];
-    phoneVerified = json['phone_verified'];
-    gender = json['gender'];
-    occupation = json['occupation'];
-    idNumber = json['id_number'];
-    idScan = json['id_scan'];
-    tinNumber = json['tin_number'];
-    tinScan = json['tin_scan'];
-    birthdate = json['birthdate'];
-    company = json['company'];
-    companyAddress = json['company_address'];
-    position = json['position'];
-    monthlyIncome = json['monthly_income'];
-    incomeSource = json['income_source'];
-    buyer = json['buyer'];
-    phoneCountry = json['phone_country'];
-    country = json['country'];
-    interest = json['interest'];
-    unsubscribeEmailAt = json['unsubscribe_email_at'];
-    freshchatRestoreId = json['freshchat_restore_id'];
-    allowCreateClient = json['allow_create_client'];
-    allowCreateToken = json['allow_create_token'];
-    interests = json['interests'].cast<String>();
-    //state = json['state'] != null ? new State.fromJson(json['state']) : null;
-    familyCardNumber = json['family_card_number'];
-    familyCardScan = json['family_card_scan'];
-    telegramId = json['telegram_id'];
-    genderName = json['gender_name'];
-    expiredDate = json['expired_date'];
-    expiredTime = json['expired_time'];
-    upcomingBirthdate = json['upcoming_birthdate'];
+    settings = json['settings'] != null
+        ? Settings.fromJson(json['settings'] as Map<String, dynamic>)
+        : null;
+    createdAt =
+        json['created_at'] != null ? json['created_at'] as String : null;
+    updatedAt =
+        json['updated_at'] != null ? json['updated_at'] as String : null;
+    regionId = json['region_id'] != null ? json['region_id'] as String : null;
+    address = json['address'] != null ? json['address'] as String : null;
+    lastLoginAt =
+        json['last_login_at'] != null ? json['last_login_at'] as String : null;
+    deactivated =
+        json['deactivated'] != null ? json['deactivated'] as bool : null;
+    expiredAt =
+        json['expired_at'] != null ? json['expired_at'] as String : null;
+    phone = json['phone'] != null ? json['phone'] as String : null;
+    phoneVerified =
+        json['phone_verified'] != null ? json['phone_verified'] as bool : null;
+    gender = json['gender'] != null ? json['gender'] as int : null;
+    occupation =
+        json['occupation'] != null ? json['occupation'] as String : null;
+    idNumber = json['id_number'] != null ? json['id_number'] as String : null;
+    idScan = json['id_scan'] != null ? json['id_scan'] as String : null;
+    tinNumber =
+        json['tin_number'] != null ? json['tin_number'] as String : null;
+    tinScan = json['tin_scan'] != null ? json['tin_scan'] as String : null;
+    birthdate = json['birthdate'] != null ? json['birthdate'] as String : null;
+    company = json['company'] != null ? json['company'] as String : null;
+    companyAddress = json['company_address'] != null
+        ? json['company_address'] as String
+        : null;
+    position = json['position'] != null ? json['position'] as String : null;
+    monthlyIncome = json['monthly_income'] != null
+        ? json['monthly_income'] as String
+        : null;
+    incomeSource =
+        json['income_source'] != null ? json['income_source'] as String : null;
+    buyer = json['buyer'] != null ? json['buyer'] as bool : null;
+    phoneCountry =
+        json['phone_country'] != null ? json['phone_country'] as String : null;
+    country = json['country'] != null ? json['country'] as String : null;
+    interest = json['interest'] != null ? json['interest'] as String : null;
+    unsubscribeEmailAt = json['unsubscribe_email_at'] != null
+        ? json['unsubscribe_email_at'] as String
+        : null;
+    freshchatRestoreId = json['freshchat_restore_id'] != null
+        ? json['freshchat_restore_id'] as String
+        : null;
+    allowCreateClient = json['allow_create_client'] != null
+        ? json['allow_create_client'] as bool
+        : null;
+    allowCreateToken = json['allow_create_token'] != null
+        ? json['allow_create_token'] as bool
+        : null;
+    interests = json['interests'] != null
+        ? List<String>.from(json['interests'] as List<dynamic>)
+        : null;
+    // state = json['state'] != null
+    //     ? State.fromJson(json['state'] as Map<String, dynamic>)
+    //     : null;
+    familyCardNumber = json['family_card_number'] != null
+        ? json['family_card_number'] as String
+        : null;
+    familyCardScan = json['family_card_scan'] != null
+        ? json['family_card_scan'] as String
+        : null;
+    telegramId =
+        json['telegram_id'] != null ? json['telegram_id'] as String : null;
+    genderName =
+        json['gender_name'] != null ? json['gender_name'] as String : null;
+    expiredDate =
+        json['expired_date'] != null ? json['expired_date'] as String : null;
+    expiredTime =
+        json['expired_time'] != null ? json['expired_time'] as String : null;
+    upcomingBirthdate = json['upcoming_birthdate'] != null
+        ? json['upcoming_birthdate'] as String
+        : null;
   }
 
   Map<String, dynamic> toJson() {
